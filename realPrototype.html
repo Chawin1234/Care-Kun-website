@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Care_Kun</title> 
+  <link rel="stylesheet" href="style.css"/>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <style>
+    .slide {
+      display: none;
+    }
+    .active {
+      display: block;
+    } 
+  </style>
+</head>
+<body>
+
+  <!-- Login Form -->
+  <div class="LGwrapper slide active" id="slide2">
+    <form action="" id="loginForm6">
+      <h1>LOGIN</h1>
+
+      <div class="role">
+        <label>เลือกประเภทผู้ใช้:</label>
+        <button class="PS" onclick="changePlaceholder('staff')">บุคลากร</button>
+        <button class="IN" onclick="changePlaceholder('general')">บุคคลทั่วไป</button>
+      </div>
+
+      <div class="username">
+        <i class='bx bx-user'></i> 
+        <label id="first">PROVIDER ID :</label>
+        <input type="text" id="login-id" placeholder="กรอกเลขบัตรประชาชน 13หลัก" required />
+      </div>
+
+      <div class="password">
+        <i class='bx bx-lock'></i>
+        <label>PASSWORD :</label>
+        <input type="password" id="login-password" placeholder="กรอเบอร์โทรศัพท์ เช่น 012XXXXXXX" required />
+      </div>
+
+      <div class="submit">
+        <button type="submit" class="btn">LOGIN</button>
+      </div>
+
+      <div class="register">
+        <p>Don't have an account?</p>
+        <button type="button" class="btn" onclick="showSlide(6)">สมัครบุคลากร</button>
+        <button type="button" class="btn" onclick="showSlide(7)">สมัครบุคคลทั่วไป</button>
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Register(6) Form -->
+   <div class="RG6 slide" id="slide6">
+    <form action="" id ="registerForm6">
+      <h6>สมัครบุคลากร</h6>
+        <div class="provider">
+          <label>PROVIDER ID :</label>
+          <input type="text" id="register-id-staff" placeholder="กรอกข้อมูลของคุณ" required />
+        </div>
+        <div class="passwordStaff">
+          <label>PASSWORD :</label>
+          <input type="password" id="register-password-staff" placeholder="กรอกรหัสผ่าน" required />
+        </div>
+        <div class="nameStaff">
+          <label>ชื่อ-นามสกุล</label>
+          <input type="text" placeholder="กรอกข้อมูลของคุณ" required>
+        </div>
+        <div class="phoneStaff">
+          <label>เบอร์โทรศัพท์</label>
+          <input type="text" id="register-phone-staff" placeholder="กรอกเบอร์โทรศัพท์" required />
+        </div>
+        <div class="emailStaff">
+          <label>อีเมล</label>
+          <input type="email" placeholder="กรอกข้อมูลของคุณ">
+        </div>
+        <div class="RegisterStaff">
+          <button type="submit" class="btn">REGISTER</button>
+        </div>
+        <div class="loginStaff">
+          <p><a href="#" onclick="showSlide(2)">back</a></p>
+        </div>
+    </form>
+   </div>
+
+  <!-- Register(7) Form -->
+   <div class="RG7 slide" id="slide7">
+    <form action="" id ="registerForm7">
+      <label>สมัครบุคคลทั่วไป</label>
+      <div class="citizen">
+          <label>CITIZEN ID :</label>
+          <input type="text" id="register-id-general" placeholder="กรอกข้อมูลของคุณ" required />
+      </div>
+      <div class="  1">
+          <label>PASSWORD :</label>
+          <input type="password" id="register-password-general" placeholder="กรอกรหัสผ่าน" required />
+      </div>
+      <div class="nameGeneral">
+          <label>ชื่อ-นามสกุล</label>
+          <input type="text" placeholder="กรอกข้อมูลของคุณ" required>
+      </div>
+      <div class="phoneGeneral">
+          <label>เบอร์โทรศัพท์</label>
+          <input type="text" id="register-phone-general" placeholder="กรอกเบอร์โทรศัพท์" required />
+      </div>
+      <div class="emailGeneral">
+          <label>อีเมล</label>
+          <input type="email" placeholder="กรอกข้อมูลของคุณ">
+      </div>
+      <div class="RegisterGeneral">
+          <button type="submit" class="btn">REGISTER</button>
+      </div>
+      <div class="loginGeneral">
+          <p><a href="#" onclick="showSlide(2)">back</a></p>
+      </div>
+    </form>
+  </div>
+
+
+    <!-- Main Server Form -->
+     <div class="MNwrapper slide" id="slide3">
+        <h3>MAIN SERVER</h3>
+        <form action="">
+            <div class="main">
+                <button type="button" class="hb" onclick="showSlide(5)">Hospital bed</button>
+                <button type="button" class="delete" onclick="deleteAccount()">delete account</button>
+            </div>
+            
+        </form>
+    </div>
+
+    <!-- Hospital Bed Form -->
+    <div class="HBwrapper slide" id="slide5">
+     <h5>Hospital Bed</h5>
+      <form action="">
+        <div id="bed-list">
+          <!-- เตียงจะถูกสร้างด้วย JS -->
+        </div>
+
+        <div class="back">
+          <p><a href="#" onclick="showSlide(3)">back</a></p>
+        </div>
+      </form>
+    </div>
+
+    <!-- Forgot Password Form -->
+    <div class="FPwrapper slide" id="slide4">
+      <form id="forgotPasswordForm">
+       <h4>ลืมรหัสผ่าน</h4>
+
+        <label>กรอกเลขบัตรประชาชน:</label>
+        <input type="text" id="forgot-id" required />
+
+        <label>ตั้งรหัสผ่านใหม่:</label>
+        <input type="password" id="new-password" required />
+
+        <div class="submit">
+          <button type="submit" class="btn">รีเซ็ตรหัสผ่าน</button>
+        </div>
+
+        <div class="back">
+          <p><a href="#" onclick="showSlide(2)">กลับไปหน้าเข้าสู่ระบบ</a></p>
+        </div>
+      </form>
+    </div>
+
+
+
+  <!-- Script -->
+<script>
+  let currentRole = "staff"; // Default role
+
+  function changePlaceholder(role) {
+  currentRole = role; 
+  const input = document.getElementById("login-id"); 
+  if (role === "staff") {
+    input.placeholder = "กรอกรหัสประจำตัว";
+  } else if (role === "general") {
+    input.placeholder = "กรอกเลขบัตรประชาชน 13 หลัก";
+  }
+  const input1 = document.getElementById("login-password"); 
+  if (role === "staff") {
+    input1.placeholder = "รหัสผ่าน";
+  } else if (role === "general") {
+   input1.placeholder = "กรอกเบอร์โทรศัพท์ เช่น 012XXXXXXX";
+  }
+  const input2 = document.getElementById("first"); 
+  if (role === "staff") {
+   input2.textContent = "PROVIDER ID :";
+  } else if (role === "general") {
+   input2.textContent = "CITIZEN ID :";
+  }
+}
+
+
+  function showSlide(slideNumber) {
+    document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+    document.getElementById('slide' + slideNumber).classList.add('active');
+  }
+
+  document.querySelector("#registerForm6").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const id = this.querySelector(".provider input").value;
+    const password = this.querySelector(".passwordStaff input").value;
+    const name = this.querySelector(".nameStaff input").value;
+    const phone = this.querySelector(".phoneStaff input").value;
+    const email = this.querySelector(".emailStaff input").value;
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    if (users.find(user => user.id === id)) {
+      alert("รหัสนี้มีในระบบแล้ว");
+      return;
+    }
+
+    users.push({ id, password, name, role: 'staff' });
+    localStorage.setItem("users", JSON.stringify(users));
+    alert("ลงทะเบียนสำเร็จ!");
+    showSlide(2);
+  });
+
+  document.querySelector("#registerForm7").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const id = this.querySelector(".citizen input").value;
+  const password = this.querySelector(".passwordGeneral input").value;
+  const name = this.querySelector(".nameGeneral input").value;
+  const phone = this.querySelector(".phoneGeneral input").value;
+  const email = this.querySelector(".emailGeneral input").value;
+
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  if (users.find(user => user.id === id)) {
+    alert("รหัสนี้มีในระบบแล้ว");
+    return;
+  }
+
+  users.push({ id, password, name, role: 'general' });
+  localStorage.setItem("users", JSON.stringify(users));
+  alert("ลงทะเบียนสำเร็จ!");
+  showSlide(2); 
+});
+
+  document.querySelector("#loginForm6").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const id = this.querySelector(".username input").value;
+    const password = this.querySelector(".password input").value;
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    const matchedUser = users.find(user => user.id === id && user.password === password && user.role === currentRole);
+
+    if (matchedUser) {
+      alert("เข้าสู่ระบบสำเร็จ: ยินดีต้อนรับ " + matchedUser.name);
+      showSlide(3); // ไปหน้า Main Server
+    } else {
+      alert("ไม่พบผู้ใช้หรือรหัสผ่านผิด หรือประเภทผู้ใช้ไม่ถูกต้อง");
+    }
+  });
+
+  function deleteAccount() {
+  const id = document.getElementById('login-id').value;
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  // ลบผู้ใช้ที่ id ตรงกัน
+  users = users.filter(user => user.id !== id);
+  localStorage.setItem("users", JSON.stringify(users));
+
+  alert("ลบบัญชีเรียบร้อยแล้ว");
+  showSlide(2); // กลับไปหน้า login
+}
+
+  let beds = [
+    { id: 1, room: '1' },
+    { id: 2, room: '1' },
+    { id: 3, room: '2' },
+    { id: 4, room: '2' }
+  ];
+
+  // โหลดสถานะจาก localStorage ถ้ามี
+  function loadBedStatus() {
+    const saved = localStorage.getItem('bedStatus');
+    if (saved) {
+      const statusMap = JSON.parse(saved);
+      beds = beds.map(bed => ({
+        ...bed,
+        status: statusMap[bed.id] || 'ว่าง'
+      }));
+    } else {
+      beds = beds.map(bed => ({ ...bed, status: 'ว่าง' }));
+    }
+  }
+
+  function saveBedStatus() {
+    const statusMap = {};
+    beds.forEach(bed => {
+      statusMap[bed.id] = bed.status;
+    });
+    localStorage.setItem('bedStatus', JSON.stringify(statusMap));
+  }
+
+  function renderBeds() {
+  const bedList = document.getElementById('bed-list');
+  bedList.innerHTML = '';
+
+  beds.forEach((bed, index) => {
+    const bedDiv = document.createElement('div');
+    bedDiv.className = 'bed';
+    bedDiv.innerHTML = `
+      <h5>ห้อง ${bed.room}</h5>
+      <p>เตียง ${bed.id}</p>
+      <p>สถานะ: <span id="status-${index}">${bed.status}</span></p>
+      ${
+        bed.status === 'ว่าง'
+          ? `<button onclick="bookBed(${index})">จอง</button>`
+
+          : `<button onclick="cancelBooking(${index})">ยกเลิก</button>`
+      }
+    `;
+    bedList.appendChild(bedDiv);
+  });
+  }
+
+  function bookBed(index) {
+    localStorage.setItem("selectedBedIndex", index);
+    showSlide(1);
+    beds[index].status = 'เต็ม';
+    saveBedStatus();
+    renderBeds();
+  }
+  function cancelBooking(index) {
+  if (confirm("คุณต้องการยกเลิกการจองเตียงนี้ใช่หรือไม่?")) {
+    beds[index].status = 'ว่าง';
+    saveBedStatus();
+    renderBeds();
+    }
+  }
+
+  // เรียกตอนเริ่ม
+  loadBedStatus();
+  renderBeds();
+
+</script>
+
+</body>
+
+</html>
